@@ -67,6 +67,7 @@ def extract_json_records():
                     "system_id": snapshot.get("data_store"),
                     "collection": snapshot.get("collection"),
                     "captured_at": snapshot.get("captured_at"),
+                    "file_captured_at": evidence["captured_at"],
                     "record": record
                 })
 
@@ -106,6 +107,7 @@ def extract_service_records():
                             "observed_at",
                             evidence["captured_at"]
                         ),
+                        "file_captured_at": evidence["captured_at"],
                         "record": record
                     })
 

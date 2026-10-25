@@ -34,8 +34,17 @@ def get_resource_timeline(resource_id, audit_at):
 
         observed_at = parse_time(item["captured_at"])
 
-        if observed_at is None or observed_at > cutoff:
+        
+        file_captured_at = parse_time(item.get("file_captured_at"))
+
+        if (
+            observed_at is None
+            or file_captured_at is None
+            or observed_at > cutoff
+            or file_captured_at > cutoff
+        ):
             continue
+
 
         timeline.append(item)
 
